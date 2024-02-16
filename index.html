@@ -10,16 +10,18 @@
     <div id="main-screen" class="screen">
         <h1>Welcome to Fun Scratcher Simulator!</h1>
         <p>Please select a button:</p>
-        <button onclick="loadScratcher(1)">Button A</button>
-        <button onclick="loadScratcher(3)">Button B</button>
-        <button onclick="loadScratcher(5)">Button C</button>
-        <p>Total Credits: <span id="total-credits">0</span></p>
+        <div class="button-container">
+            <button class="button" onclick="loadScratcher(1)">Button A</button>
+            <button class="button" onclick="loadScratcher(3)">Button B</button>
+            <button class="button" onclick="loadScratcher(5)">Button C</button>
+        </div>
+        <p class="total-credits">Total Credits: <span id="total-credits">0</span></p>
     </div>
 
     <div id="scratcher-screen" class="screen hidden">
         <h1>Scratcher</h1>
         <div id="scratcher-container"></div>
-        <button onclick="playAgain()">Play Again</button>
+        <button class="play-again" onclick="playAgain()">Play Again</button>
     </div>
 
     <script src="script.js"></script>
