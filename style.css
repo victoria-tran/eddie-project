@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.scratch-card {
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid #333;
+    width: 120px;
+    height: 120px;
+    position: relative;
+}
+
+.square {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #999;
+    background-color: #ccc;
+    position: absolute;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
