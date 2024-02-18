@@ -1,6 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Number Boxes</title>
+<style>
+    .container {
+        width: 300px;
+        height: 200px;
+        border: 2px solid black;
+        position: relative;
+    }
+    .box {
+        width: 40px;
+        height: 40px;
+        background-color: lightblue;
+        border: 1px solid black;
+        position: absolute;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="container" id="container">
+    <div class="box" id="box1" onclick="revealNumber(1)"></div>
+    <div class="box" id="box2" onclick="revealNumber(2)"></div>
+    <div class="box" id="box3" onclick="revealNumber(3)"></div>
+    <div class="box" id="box4" onclick="revealNumber(4)"></div>
+    <div class="box" id="box5" onclick="revealNumber(5)"></div>
+    <div class="box" id="box6" onclick="revealNumber(6)"></div>
+</div>
+
+<script>
+function revealNumber(boxNumber) {
+    var randomNumber = Math.floor(Math.random() * 100) + 1; // Generate a random number between 1 and 100
+    alert("Random number in box " + boxNumber + ": " + randomNumber);
+}
+</script>
+
+</body>
+</html>
+
+
+/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Modern Website</title>
@@ -30,3 +76,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+*/
