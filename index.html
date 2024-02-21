@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Modern Website</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Lucky </title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Scratcher Simulator!</h1>
-        <nav>
-           
-        </nav>
-    </header>
-    <main>
-        <section id="home">
-            <h2>Choose a button</h2>
-            <p></p>
-        </section>
-        <section id="about">
-            <h2>SCORE: </h2>
-            <p>.</p>
-        </section>
-      
-    </main>
-    <footer>
-        <p>&copy; 2024 Simple Modern Website</p>
-    </footer>
-    <script src="script.js"></script>
+  <div id="welcome" class="container">
+    <h1>Choose Your Bet!</h1>
+
+    <button class="betBtn" onclick="startGame(1, 5)">Single bet</button>
+    <button class="betBtn" onclick="startGame(3, 15)">Bulk bet 3</button>
+    <button class="betBtn" onclick="startGame(4, 20)">Bulk bet 4</button>
+    <button class="betBtn" onclick="startGame(5, 25)">Bulk bet 5</button>
+      <p> 5 Credits  |  15 Credits  |   20 Credits    |    25 Credits </p>
+
+  <p class="creditBox">Your Credits: <span id="scoreDisplay">3000</span></p>
+  <p>Number of clicks:</p>
+  <p>1 Scratcher:  <span id="clickCount1">0</span></p>
+  <p>3 Scratchers: <span id="clickCount3">0</span></p>
+  <p>4 Scratchers: <span id="clickCount4">0</span></p>
+  <p>5 Scratchers: <span id="clickCount5">0</span></p>
+
+  </div>
+
+
+
+
+  <div id="game" style="display: none;">
+    <div class="container">
+      <button id="returnBtn" onclick="returnToWelcome()" style="display: none;">Play Again</button>
+      <div id="scoreDisplayGame"></div>
+      <div class="gameContainer"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
