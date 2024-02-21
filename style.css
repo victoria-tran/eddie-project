@@ -1,64 +1,117 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+h1{
+  font-family: monospace;
+  color: #FDD857;
+  font-size: 50px;
+}
+p {
+  font-family: arial;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+.container {
+  text-align: center;
+  margin-top: 5px;
+  background-color: #5cbde6;
+  padding: 50px;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
+.betBtn{
+  background-color: #FDD857;
+  border: #FDD857;
+  border-radius: 5px;
+  font-family: monospace;
+  padding: 10px;
+  margin-left: 10px;
+}
+.scratcher {
+  width: 280px;
+  height: 500px;
+  background-color: #fffddf;
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+  border-radius: 25px;
 }
 
-header h1 {
-    margin: 0;
+.winning-number {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border: 4px solid #ff914d;
+  color: #575757;
+  position: absolute;
+  top: 80px;
+  left: 104px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  font-family: monospace;
+  z-index: 1; /* Ensure the winning number is on top */
+  border-radius: 10px;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.square {
+  width: 40px; /* Adjusted width to fit 3 squares in a row */
+  height: 40px; /* Adjusted height to fit 3 squares in a row */
+  background-color: white;
+  border: 2px solid #FDD857;
+  display: inline-block;
+  margin: 20px;
+  cursor: pointer;
+  position: relative;
+  top: 20px; /* Adjust the top offset */
+  border-radius: 10px;
+  font-family: monospace;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+.congrats {
+  color: green;
+  font-family: monospace;
+  font-size: 10px;
+  position: relative;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+#returnBtn {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-color: #FF66C4;
+  border: #FF66C4;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
 }
 
-main {
-    padding: 20px;
+.creditBox {
+background-color:#5CA8E6;
+font-size: 24px;
+padding: 10px;
+font-family: monospace;
+color: white;
+
 }
 
-section {
-    margin-bottom: 40px;
+#scoreDisplayGame {
+  font-size: 20px;
+  font-family: monospace;
+  color: #fff; /* Text color */
+  margin-bottom: 20px; /* Adjust spacing as needed */
 }
 
-section h2 {
-    color: #333;
+/* Style for the "Your Numbers" text */
+.your-numbers-text {
+  font-size: 14px;
+  font-family: monospace;
+  color: black;
+  text-align: center;
+  margin-top: 150px; /* Adjust as needed */
 }
-
-section p {
-    color: #666;
-}
-
-section ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
-footer p {
-    margin: 0;
+/* Style for the "Your Numbers" text */
+.winning-number-text{
+  font-size: 14px;
+  font-family: monospace;
+  color: black;
+  text-align: center;
+  margin-top: 45px; /* Adjust as needed */
 }
