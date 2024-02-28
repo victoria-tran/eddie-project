@@ -62,7 +62,7 @@ function startGame(numScratchers, cost) {
             scratcher.appendChild(winningNumberText);
 
     // Generate a random winning number for each scratcher
-    const winningNumber = Math.floor(Math.random() * 51);
+    const winningNumber = Math.floor(Math.random() * 21);
     const winningNumberBox = document.createElement('div');
     winningNumberBox.classList.add('winning-number');
     winningNumberBox.innerText = winningNumber;
@@ -81,7 +81,7 @@ function startGame(numScratchers, cost) {
     for (let j = 0; j < 6; j++) {
       const square = document.createElement('div');
       square.classList.add('square');
-      const randomNumber = Math.floor(Math.random() * 51); // Assign a random number to each square
+      const randomNumber = Math.floor(Math.random() * 21); // Assign a random number to each square
       square.setAttribute('data-number', randomNumber);
       square.onclick = function() { revealNumber(this, winningNumber, numScratchers); }; // Attach click event handler
       scratcher.appendChild(square);
@@ -91,14 +91,24 @@ function startGame(numScratchers, cost) {
   }
 }
 
+// revealNumber()
 function revealNumber(square, winningNumber, numScratchers) {
   const number = parseInt(square.getAttribute('data-number'), 10);
   square.innerText = number;
-  square.style.backgroundColor = 'white'; // Change background color to black
+  square.style.backgroundColor = 'white'; // Change background color to white
+
+  const scratcher = square.closest('.scratcher');
+  const allSquares = scratcher.querySelectorAll('.square');
+  let winningNumberFound = false;
+
+  allSquares.forEach(s => {
+    if (parseInt(s.innerText, 10) === winningNumber) {
+      winningNumberFound = true;
+    }
+  });
+
 
   if (number === winningNumber) {
-    const scratcher = square.closest('.scratcher');
-    const allSquares = scratcher.querySelectorAll('.square');
     allSquares.forEach(s => {
       if (parseInt(s.innerText, 10) !== winningNumber) {
         s.onclick = null; // Disable click event for all other squares
@@ -109,25 +119,69 @@ function revealNumber(square, winningNumber, numScratchers) {
     // Check if the congratulations message is already present
     const congrats = scratcher.querySelector('.congrats');
     if (!congrats) {
+
+      // Play winning sound
+          const winningSound = document.getElementById('winningSound');
+          winningSound.play();
+
+      //Display Winning Message
       const congrats = document.createElement('div');
       congrats.classList.add('congrats');
-      congrats.innerText = '🎉 Congratulations! 🎉';
+      congrats.innerText = '✨🎉✨ Winner! ✨🎉✨  +100 Credits ';
       scratcher.appendChild(congrats);
       updateScore(100); // Add credits for winning
     }
+
+    // Set the background image to the confetti GIF
+    scratcher.style.backgroundImage = "url('https://media.tenor.com/HHPMFMlwwMIAAAAj/congratulations-congrats.gif')";
+    scratcher.style.backgroundRepeat = 'no-repeat';
+    scratcher.style.backgroundSize = 'cover';
   } else {
     square.onclick = null; // Disable click event for the current square
+
+    if (!winningNumberFound && !remainingUnscratchedSquares(allSquares)) {
+      const losingMessage = scratcher.querySelector('.losing-message');
+      if (!losingMessage) {
+        const losingMessage = document.createElement('div');
+        losingMessage.classList.add('losing-message');
+        losingMessage.innerText = 'No winning numbers!';
+        scratcher.appendChild(losingMessage);
+        scratcher.classList.add('no-winning-squares'); // Add a class to scratcher with no winning numbers
+        scratcher.style.backgroundColor = '#fcb040'; // Change color of scratcher with no winning numbers
+
+        // Play losing sound
+            const losingSound = document.getElementById('losingSound');
+            losingSound.play();
+      }
+    }
   }
 
-  // Check if there are any remaining unscratched squares
-  const remainingSquares = document.querySelectorAll('.square:not([style*="white"])');
-  if (remainingSquares.length === 0) {
+  // Check if all scratchers have either a "No winning numbers" or "Winner +100" message
+  const allScratchers = document.querySelectorAll('.scratcher');
+  let allScratchersCompleted = true;
+  allScratchers.forEach(scratcher => {
+    if (!scratcher.querySelector('.congrats') && !scratcher.querySelector('.losing-message')) {
+      allScratchersCompleted = false;
+    }
+  });
+
+  // If all scratchers are completed, show the "Play Again" button
+  if (allScratchersCompleted) {
     const returnBtn = document.getElementById('returnBtn');
     returnBtn.style.display = 'block';
   }
 }
 
+function remainingUnscratchedSquares(squares) {
+  for (let i = 0; i < squares.length; i++) {
+    if (squares[i].style.backgroundColor !== 'white') {
+      return true;
+    }
+  }
+  return false;
+}
 
+// END revealNumber() *****
 
 function returnToWelcome() {
   const welcomeSection = document.getElementById('welcome');
