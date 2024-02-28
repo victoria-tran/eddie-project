@@ -1,14 +1,16 @@
-h1{
+h1 {
   font-family: monospace;
   color: #FDD857;
   font-size: 50px;
 }
+
 p {
   font-family: arial;
   color: white;
   font-size: 20px;
   padding: 10px;
 }
+
 .container {
   text-align: center;
   margin-top: 5px;
@@ -16,7 +18,7 @@ p {
   padding: 50px;
 }
 
-.betBtn{
+.betBtn {
   background-color: #FDD857;
   border: #FDD857;
   border-radius: 5px;
@@ -24,6 +26,7 @@ p {
   padding: 10px;
   margin-left: 10px;
 }
+
 .scratcher {
   width: 280px;
   height: 500px;
@@ -34,6 +37,13 @@ p {
   border-radius: 25px;
 }
 
+.winning-scratcher {
+  background-image: url('https://media.tenor.com/HHPMFMlwwMIAAAAj/congratulations-congrats.gif');
+  background-size: 15%; /* Adjust the size as needed */
+  background-position: left center; /* Move the background image slightly to the left */
+}
+
+
 .winning-number {
   width: 60px;
   height: 60px;
@@ -41,7 +51,7 @@ p {
   border: 4px solid #ff914d;
   color: #575757;
   position: absolute;
-  top: 80px;
+  top: 85px;
   left: 104px;
   text-align: center;
   line-height: 50px;
@@ -68,8 +78,9 @@ p {
 .congrats {
   color: green;
   font-family: monospace;
-  font-size: 10px;
+  font-size: 20px;
   position: relative;
+  top: 20px;
 }
 
 #returnBtn {
@@ -84,12 +95,11 @@ p {
 }
 
 .creditBox {
-background-color:#5CA8E6;
-font-size: 24px;
-padding: 10px;
-font-family: monospace;
-color: white;
-
+  background-color:#5CA8E6;
+  font-size: 24px;
+  padding: 10px;
+  font-family: monospace;
+  color: white;
 }
 
 #scoreDisplayGame {
@@ -105,13 +115,28 @@ color: white;
   font-family: monospace;
   color: black;
   text-align: center;
-  margin-top: 150px; /* Adjust as needed */
+  margin-top: 120px; /* Adjust as needed */
 }
+
 /* Style for the "Your Numbers" text */
-.winning-number-text{
+.winning-number-text {
   font-size: 14px;
   font-family: monospace;
   color: black;
   text-align: center;
   margin-top: 45px; /* Adjust as needed */
+}
+
+/* Style for the losing message */
+.losing-message {
+  color: red;
+  font-family: monospace;
+  font-size: 20px;
+  position: relative;
+  top: 20px;
+}
+
+/* Add style for scratchers with no winning numbers */
+.no-winning-squares {
+  background-color: #fcb040; /* Change background color to #fcb040 */
 }
