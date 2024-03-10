@@ -132,10 +132,8 @@ function revealNumber(square, winningNumber, numScratchers) {
       updateScore(100); // Add credits for winning
     }
 
-    // Set the background image to the confetti GIF
-    scratcher.style.backgroundImage = "url('https://media.tenor.com/HHPMFMlwwMIAAAAj/congratulations-congrats.gif')";
-    scratcher.style.backgroundRepeat = 'no-repeat';
-    scratcher.style.backgroundSize = 'cover';
+   
+    
   } else {
     square.onclick = null; // Disable click event for the current square
 
