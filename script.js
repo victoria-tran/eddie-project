@@ -225,7 +225,7 @@ function returnToWelcome() {
 }
 
 function showDialogBox() {
-  alert("Take a 5 minute break. If you are still scratching off numbers, please finish them before taking a break. The experimenter will inform you of what to do next.");
+  alert(" 🛑 Take a 5 minute break. 🛑 If you are still scratching off numbers, please finish them before taking a break. The experimenter will inform you of what to do next.");
 }
 
 
