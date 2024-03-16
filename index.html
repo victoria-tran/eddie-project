@@ -20,6 +20,15 @@
     <p>3 Scratchers: <span id="clickCount3">0</span></p>
     <p>4 Scratchers: <span id="clickCount4">0</span></p>
     <p>5 Scratchers: <span id="clickCount5">0</span></p>
+
+    <div class="timer-buttons">
+      <button class="timerBtn" onclick="setTimer(5)">5s</button>
+      <button class="timerBtn" onclick="setTimer(12)">12s</button>
+      <button class="timerBtn" onclick="setTimer(13)">13s</button>
+      <button class="timerBtn" onclick="setTimer(14)">14s</button>
+      <button class="timerBtn" onclick="setTimer(15)">15s</button>
+      <button class="timerBtn" onclick="setTimer(20)">20s</button>
+    </div>
   </div>
 
   <div id="game" style="display: none;">
@@ -39,6 +48,7 @@
     Your browser does not support the audio element.
   </audio>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
