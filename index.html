@@ -15,22 +15,29 @@
     <button class="betBtn" onclick="startGame(5, 25)">Bulk bet 5</button>
     <p>5 Credits | 15 Credits | 20 Credits | 25 Credits</p>
     <p class="creditBox">Your Credits: <span id="scoreDisplay">3000</span></p>
-    <p>Number of clicks:</p>
-    <p>1 Scratcher: <span id="clickCount1">0</span></p>
-    <p>3 Scratchers: <span id="clickCount3">0</span></p>
-    <p>4 Scratchers: <span id="clickCount4">0</span></p>
-    <p>5 Scratchers: <span id="clickCount5">0</span></p>
-      <button onclick="resetClickCount()">Reset Click Count</button>
+
+    <p class ="numClicks">Number of clicks:</p>
+    <p class ="numClicks">1 Scratcher: <span id="clickCount1">0</span></p>
+    <p class ="numClicks">3 Scratchers: <span id="clickCount3">0</span></p>
+    <p class ="numClicks">4 Scratchers: <span id="clickCount4">0</span></p>
+    <p class ="numClicks">5 Scratchers: <span id="clickCount5">0</span></p>
+
+    <div class ="spaceBlock"> </div> </div>
 
     <div class="timer-buttons">
-      <button class="timerBtn" onclick="setTimer(5)">5s</button>
-      <button class="timerBtn" onclick="setTimer(12)">12s</button>
-      <button class="timerBtn" onclick="setTimer(13)">13s</button>
-      <button class="timerBtn" onclick="setTimer(14)">14s</button>
-      <button class="timerBtn" onclick="setTimer(15)">15s</button>
-      <button class="timerBtn" onclick="setTimer(20)">20s</button>
+      <button class="timerBtn" onclick="setTimer(300)"> </button>
+      <button class="timerBtn" onclick="setTimer(360)"> </button>
+      <button class="timerBtn" onclick="setTimer(480)"> </button>
+      <button class="timerBtn" onclick="setTimer(540)"> </button>
+      <button class="timerBtn" onclick="setTimer(660)"> </button>
+      <button class="timerBtn" onclick="setTimer(720)"> </button>
     </div>
+
+
+    <button class = "downloadBtn" onclick="downloadClickCounts()"> </button>
+  <button class = "resetClicksBtn" onclick="resetClickCount()"> </button>
   </div>
+
 
   <div id="game" style="display: none;">
     <div class="container">
