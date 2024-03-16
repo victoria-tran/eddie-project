@@ -11,6 +11,10 @@ p {
   padding: 10px;
 }
 
+p2{
+  color: #5cbde6;
+}
+
 .container {
   text-align: center;
   margin-top: 5px;
@@ -171,19 +175,51 @@ p {
 /* Your existing CSS styles here */
 
 .timer-buttons {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .timerBtn {
-  background-color: #FDD857;
+  background-color: #5cbde6;
   border: none;
   border-radius: 5px;
   font-family: monospace;
-  padding: 8px 16px;
+  color:#2690bd;
+  padding: 8px;
   margin: 5px;
   cursor: pointer;
 }
 
 .timerBtn.selected {
   background-color: green;
+}
+
+.numClicks{
+  color:#5cbde6;
+}
+
+.downloadBtn{
+  background-color: #75befa;
+  border: none;
+  border-radius: 5px;
+  font-family: monospace;
+  color:white;
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.resetClicksBtn{
+  background-color: #68b4f2;
+  border: none;
+  border-radius: 5px;
+  font-family: monospace;
+  color:white;
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.spaceBlock{
+  padding: 500px;
+  color:#5cbde6;
 }
