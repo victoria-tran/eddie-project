@@ -4,6 +4,7 @@ let clickCount3 = 0;
 let clickCount4 = 0;
 let clickCount5 = 0;
 let selectedTimer = null;
+let dialogBoxShown = false;
 
 function updateScore(scoreChange) {
   totalScore += scoreChange;
@@ -18,6 +19,7 @@ function updateScore(scoreChange) {
 
 function setTimer(timer) {
   selectedTimer = timer;
+  dialogBoxShown = false; // Reset the flag when a new timer is selected
   const timerButtons = document.querySelectorAll('.timerBtn');
   timerButtons.forEach(button => {
     if (parseInt(button.textContent) === timer) {
@@ -38,7 +40,6 @@ function startGame(numScratchers, cost) {
 
   // Disable timer buttons until the current timer completes
   const timerButtons = document.querySelectorAll('.timerBtn');
-
   timerButtons.forEach(button => {
     button.disabled = true;
   });
@@ -49,8 +50,11 @@ function startGame(numScratchers, cost) {
       button.disabled = false;
     });
 
-    // Show dialog box after timer completes
-    showDialogBox();
+    // Show dialog box after timer completes only if it hasn't been shown before
+    if (!dialogBoxShown) {
+      showDialogBox();
+      dialogBoxShown = true; // Set the flag to true to indicate the dialog box has been shown
+    }
   }, selectedTimer * 1000);
 
   switch (numScratchers) {
