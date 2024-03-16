@@ -3,6 +3,7 @@ let clickCount1 = 0;
 let clickCount3 = 0;
 let clickCount4 = 0;
 let clickCount5 = 0;
+let selectedTimer = null;
 
 function updateScore(scoreChange) {
   totalScore += scoreChange;
@@ -15,7 +16,40 @@ function updateScore(scoreChange) {
   }
 }
 
+function setTimer(timer) {
+  selectedTimer = timer;
+  const timerButtons = document.querySelectorAll('.timerBtn');
+  timerButtons.forEach(button => {
+    if (parseInt(button.textContent) === timer) {
+      button.classList.add('selected');
+    } else {
+      button.classList.remove('selected');
+    }
+  });
+}
+
 function startGame(numScratchers, cost) {
+  if (selectedTimer === null) {
+    alert("Please select a timer first.");
+    return;
+  }
+
+  // Disable timer buttons until the current timer completes
+  const timerButtons = document.querySelectorAll('.timerBtn');
+  timerButtons.forEach(button => {
+    button.disabled = true;
+  });
+
+  // Enable timer buttons after the timer completes
+  setTimeout(() => {
+    timerButtons.forEach(button => {
+      button.disabled = false;
+    });
+
+    // Show dialog box after timer completes
+    showDialogBox();
+  }, selectedTimer * 1000);
+
   switch (numScratchers) {
     case 1:
       clickCount1++;
@@ -54,12 +88,11 @@ function startGame(numScratchers, cost) {
     const scratcher = document.createElement('div');
     scratcher.classList.add('scratcher');
 
-
-        // Create "Winning Number Text" text
-            const winningNumberText = document.createElement('div');
-            winningNumberText.classList.add('winning-number-text');
-            winningNumberText.innerText = 'Winning Number';
-            scratcher.appendChild(winningNumberText);
+    // Create "Winning Number Text" text
+    const winningNumberText = document.createElement('div');
+    winningNumberText.classList.add('winning-number-text');
+    winningNumberText.innerText = 'Winning Number';
+    scratcher.appendChild(winningNumberText);
 
     // Generate a random winning number for each scratcher
     const winningNumber = Math.floor(Math.random() * 21);
@@ -68,14 +101,11 @@ function startGame(numScratchers, cost) {
     winningNumberBox.innerText = winningNumber;
     scratcher.appendChild(winningNumberBox);
 
-
     // Create "Your Numbers" text
-        const yourNumbersText = document.createElement('div');
-        yourNumbersText.classList.add('your-numbers-text');
-        yourNumbersText.innerText = 'Your Numbers';
-        scratcher.appendChild(yourNumbersText);
-
-
+    const yourNumbersText = document.createElement('div');
+    yourNumbersText.classList.add('your-numbers-text');
+    yourNumbersText.innerText = 'Your Numbers';
+    scratcher.appendChild(yourNumbersText);
 
     // Create 6 squares for each scratcher
     for (let j = 0; j < 6; j++) {
@@ -91,7 +121,6 @@ function startGame(numScratchers, cost) {
   }
 }
 
-// revealNumber()
 function revealNumber(square, winningNumber, numScratchers) {
   const number = parseInt(square.getAttribute('data-number'), 10);
   square.innerText = number;
@@ -107,7 +136,6 @@ function revealNumber(square, winningNumber, numScratchers) {
     }
   });
 
-
   if (number === winningNumber) {
     allSquares.forEach(s => {
       if (parseInt(s.innerText, 10) !== winningNumber) {
@@ -119,10 +147,9 @@ function revealNumber(square, winningNumber, numScratchers) {
     // Check if the congratulations message is already present
     const congrats = scratcher.querySelector('.congrats');
     if (!congrats) {
-
       // Play winning sound
-          const winningSound = document.getElementById('winningSound');
-          winningSound.play();
+      const winningSound = document.getElementById('winningSound');
+      winningSound.play();
 
       //Display Winning Message
       const congrats = document.createElement('div');
@@ -132,8 +159,10 @@ function revealNumber(square, winningNumber, numScratchers) {
       updateScore(100); // Add credits for winning
     }
 
-   
-    
+    // Set the background image to the confetti GIF
+    scratcher.style.backgroundImage = "url('https://media.tenor.com/HHPMFMlwwMIAAAAj/congratulations-congrats.gif')";
+    scratcher.style.backgroundRepeat = 'no-repeat';
+    scratcher.style.backgroundSize = 'cover';
   } else {
     square.onclick = null; // Disable click event for the current square
 
@@ -148,8 +177,8 @@ function revealNumber(square, winningNumber, numScratchers) {
         scratcher.style.backgroundColor = '#fcb040'; // Change color of scratcher with no winning numbers
 
         // Play losing sound
-            const losingSound = document.getElementById('losingSound');
-            losingSound.play();
+        const losingSound = document.getElementById('losingSound');
+        losingSound.play();
       }
     }
   }
@@ -179,8 +208,6 @@ function remainingUnscratchedSquares(squares) {
   return false;
 }
 
-// END revealNumber() *****
-
 function returnToWelcome() {
   const welcomeSection = document.getElementById('welcome');
   const gameSection = document.getElementById('game');
@@ -188,4 +215,8 @@ function returnToWelcome() {
   gameSection.style.display = 'none';
   const returnBtn = document.getElementById('returnBtn');
   returnBtn.style.display = 'none'; // Hide the "Return to Welcome" button again
+}
+
+function showDialogBox() {
+  alert("Take a 5 minute break. If you are still scratching off numbers, please finish them before taking a break. The experimenter will inform you of what to do next.");
 }
