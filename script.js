@@ -29,6 +29,8 @@ function setTimer(timer) {
 }
 
 function startGame(numScratchers, cost) {
+  resetElementAppearance();
+
   if (selectedTimer === null) {
     alert("Please select a timer first.");
     return;
@@ -36,6 +38,7 @@ function startGame(numScratchers, cost) {
 
   // Disable timer buttons until the current timer completes
   const timerButtons = document.querySelectorAll('.timerBtn');
+
   timerButtons.forEach(button => {
     button.disabled = true;
   });
@@ -119,6 +122,7 @@ function startGame(numScratchers, cost) {
 
     gameContainer.appendChild(scratcher);
   }
+  updateElementAppearance(true);
 }
 
 function revealNumber(square, winningNumber, numScratchers) {
@@ -215,6 +219,9 @@ function returnToWelcome() {
   gameSection.style.display = 'none';
   const returnBtn = document.getElementById('returnBtn');
   returnBtn.style.display = 'none'; // Hide the "Return to Welcome" button again
+
+  updateElementAppearance(false);
+
 }
 
 function showDialogBox() {
@@ -231,4 +238,56 @@ function resetClickCount() {
   document.getElementById('clickCount3').innerText = clickCount3;
   document.getElementById('clickCount4').innerText = clickCount4;
   document.getElementById('clickCount5').innerText = clickCount5;
+}
+
+function downloadClickCounts() {
+  // Prepare the content of the text file
+  const content = `Number of Clicks:
+1 Scratcher: ${clickCount1}
+3 Scratchers: ${clickCount3}
+4 Scratchers: ${clickCount4}
+5 Scratchers: ${clickCount5}`;
+
+  // Create a Blob with the content
+  const blob = new Blob([content], { type: 'text/plain' });
+
+  // Create a link element to download the Blob
+  const link = document.createElement('a');
+  link.download = 'click_counts.txt';
+  link.href = window.URL.createObjectURL(blob);
+  link.click();
+}
+
+
+
+function resetElementAppearance() {
+  const timerButtons = document.querySelectorAll('.timerBtn');
+  timerButtons.forEach(button => {
+    button.style.backgroundColor = '#5cbde6';
+    button.style.color = '#2690bd';
+  });
+
+  const downloadBtn = document.querySelector('.downloadBtn');
+  downloadBtn.style.backgroundColor = '#75befa';
+
+  const resetClicksBtn = document.querySelector('.resetClicksBtn');
+  resetClicksBtn.style.backgroundColor = '#68b4f2';
+}
+
+function updateElementAppearance(inGame) {
+  if (inGame) {
+    const timerButtons = document.querySelectorAll('.timerBtn');
+    timerButtons.forEach(button => {
+      button.style.backgroundColor = 'white';
+      button.style.color = 'black';
+    });
+
+    const downloadBtn = document.querySelector('.downloadBtn');
+    downloadBtn.style.backgroundColor = 'white';
+
+    const resetClicksBtn = document.querySelector('.resetClicksBtn');
+    resetClicksBtn.style.backgroundColor = 'white';
+  } else {
+    resetElementAppearance();
+  }
 }
