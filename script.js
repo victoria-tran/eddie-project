@@ -220,3 +220,15 @@ function returnToWelcome() {
 function showDialogBox() {
   alert("Take a 5 minute break. If you are still scratching off numbers, please finish them before taking a break. The experimenter will inform you of what to do next.");
 }
+
+
+function resetClickCount() {
+  clickCount1 = 0;
+  clickCount3 = 0;
+  clickCount4 = 0;
+  clickCount5 = 0;
+  document.getElementById('clickCount1').innerText = clickCount1;
+  document.getElementById('clickCount3').innerText = clickCount3;
+  document.getElementById('clickCount4').innerText = clickCount4;
+  document.getElementById('clickCount5').innerText = clickCount5;
+}
