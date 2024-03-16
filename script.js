@@ -32,7 +32,7 @@ function startGame(numScratchers, cost) {
   resetElementAppearance();
 
   if (selectedTimer === null) {
-    alert("Please select a timer first.");
+    alert("Please wait for further instructions.");
     return;
   }
 
