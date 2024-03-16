@@ -38,10 +38,10 @@ p {
 }
 
 .winning-scratcher {
+  background-image: url('https://media.tenor.com/HHPMFMlwwMIAAAAj/congratulations-congrats.gif');
   background-size: 15%; /* Adjust the size as needed */
   background-position: left center; /* Move the background image slightly to the left */
 }
-
 
 .winning-number {
   width: 60px;
@@ -138,4 +138,52 @@ p {
 /* Add style for scratchers with no winning numbers */
 .no-winning-squares {
   background-color: #fcb040; /* Change background color to #fcb040 */
+}
+
+.timerBtn {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.timerBtn.selected {
+  background-color: #00ff00; /* Highlight selected button in green */
+}
+
+#beginTimerBtn {
+  background-color: #00ff00; /* Green background for "Begin Timer" button */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#timerDisplay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+}
+
+/* Your existing CSS styles here */
+
+.timer-buttons {
+  margin-top: 20px;
+}
+
+.timerBtn {
+  background-color: #FDD857;
+  border: none;
+  border-radius: 5px;
+  font-family: monospace;
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.timerBtn.selected {
+  background-color: green;
 }
