@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <div id="timerDisplay"></div>
+
   <div id="welcome" class="container">
     <h1>Choose Your Bet!</h1>
     <button class="betBtn" onclick="startGame(1, 5)">Single bet</button>
@@ -16,28 +19,26 @@
     <p>5 Credits | 15 Credits | 20 Credits | 25 Credits</p>
     <p class="creditBox">Your Credits: <span id="scoreDisplay">3000</span></p>
 
-    <p class ="numClicks">Number of clicks:</p>
-    <p class ="numClicks">1 Scratcher: <span id="clickCount1">0</span></p>
-    <p class ="numClicks">3 Scratchers: <span id="clickCount3">0</span></p>
-    <p class ="numClicks">4 Scratchers: <span id="clickCount4">0</span></p>
-    <p class ="numClicks">5 Scratchers: <span id="clickCount5">0</span></p>
+    <p class="numClicks">Number of clicks:</p>
+    <p class="numClicks">1 Scratcher: <span id="clickCount1">0</span></p>
+    <p class="numClicks">3 Scratchers: <span id="clickCount3">0</span></p>
+    <p class="numClicks">4 Scratchers: <span id="clickCount4">0</span></p>
+    <p class="numClicks">5 Scratchers: <span id="clickCount5">0</span></p>
 
-    <div class ="spaceBlock"> </div> </div>
-
-    <div class="timer-buttons">
-      <button class="timerBtn" onclick="setTimer(300)"> </button>
-      <button class="timerBtn" onclick="setTimer(360)"> </button>
-      <button class="timerBtn" onclick="setTimer(480)"> </button>
-      <button class="timerBtn" onclick="setTimer(540)"> </button>
-      <button class="timerBtn" onclick="setTimer(660)"> </button>
-      <button class="timerBtn" onclick="setTimer(720)"> </button>
-    </div>
-
-
-    <button class = "downloadBtn" onclick="downloadClickCounts()"> </button>
-  <button class = "resetClicksBtn" onclick="resetClickCount()"> </button>
+    <div class="spaceBlock"> </div>
   </div>
 
+  <div class="timer-buttons">
+    <button class="timerBtn" onclick="setTimer(120)">5 Minute</button>
+    <button class="timerBtn" onclick="setTimer(360)">6 Minutes</button>
+    <button class="timerBtn" onclick="setTimer(480)">8 Minutes</button>
+    <button class="timerBtn" onclick="setTimer(540)">9 Minutes</button>
+    <button class="timerBtn" onclick="setTimer(660)">11 Minutes</button>
+    <button class="timerBtn" onclick="setTimer(720)">12 Minutes</button>
+  </div>
+
+  <button class="downloadBtn" onclick="downloadClickCounts()">Download Click Counts Per Minute</button>
+  <button class="resetClicksBtn" onclick="resetClickCount()">Reset Clicks</button>
 
   <div id="game" style="display: none;">
     <div class="container">
