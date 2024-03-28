@@ -58,31 +58,6 @@ function startGame(numScratchers, cost) {
     button.disabled = true;
   });
 
-  // Update the click counts per minute array dynamically based on the selected timer
-  if (selectedTimer > clickCountsPerMinute.length * 60) {
-    const minutesToAdd = Math.ceil((selectedTimer / 60) - clickCountsPerMinute.length);
-    for (let i = 0; i < minutesToAdd; i++) {
-      clickCountsPerMinute.push({ single: 0, bulk3: 0, bulk4: 0, bulk5: 0 });
-    }
-  }
-
-  // Increment the counts for the correct minute
-  const currentMinuteIndex = Math.min(Math.floor(currentMinute / 60), clickCountsPerMinute.length - 1);
-  switch (numScratchers) {
-    case 1:
-      clickCountsPerMinute[currentMinuteIndex].single++;
-      break;
-    case 3:
-      clickCountsPerMinute[currentMinuteIndex].bulk3++;
-      break;
-    case 4:
-      clickCountsPerMinute[currentMinuteIndex].bulk4++;
-      break;
-    case 5:
-      clickCountsPerMinute[currentMinuteIndex].bulk5++;
-      break;
-  }
-
   if (totalScore < cost) {
     alert("Insufficient credits!");
     return;
@@ -110,29 +85,33 @@ function startGame(numScratchers, cost) {
       remainingTime -= 1000; // Subtract 1 second
       if (remainingTime >= 0) {
         timerDisplay.innerText = formatTime(remainingTime);
-        // Increment current minute and update click counts
+        // Update current minute
         currentMinute++;
-        const currentMinuteIndex = Math.min(Math.floor(currentMinute / 60), clickCountsPerMinute.length - 1);
-        switch (numScratchers) {
-          case 1:
-            clickCountsPerMinute[currentMinuteIndex].single++;
-            break;
-          case 3:
-            clickCountsPerMinute[currentMinuteIndex].bulk3++;
-            break;
-          case 4:
-            clickCountsPerMinute[currentMinuteIndex].bulk4++;
-            break;
-          case 5:
-            clickCountsPerMinute[currentMinuteIndex].bulk5++;
-            break;
-        }
       } else {
         clearInterval(timerInterval);
         timerDisplay.innerText = "Timer Complete";
         showDialogBox(); // Show dialog box after timer completes
       }
     }, 1000); // Update timer every second
+  }
+
+  // Get the current minute index
+  const currentMinuteIndex = Math.floor(currentMinute / 60);
+
+  // Increment the counts for the correct minute
+  switch (numScratchers) {
+    case 1:
+      clickCountsPerMinute[currentMinuteIndex].single++;
+      break;
+    case 3:
+      clickCountsPerMinute[currentMinuteIndex].bulk3++;
+      break;
+    case 4:
+      clickCountsPerMinute[currentMinuteIndex].bulk4++;
+      break;
+    case 5:
+      clickCountsPerMinute[currentMinuteIndex].bulk5++;
+      break;
   }
 
   for (let i = 0; i < numScratchers; i++) {
@@ -172,6 +151,7 @@ function startGame(numScratchers, cost) {
 
   updateElementAppearance(true);
 }
+
 
 
 function formatTime(milliseconds) {
