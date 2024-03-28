@@ -110,6 +110,23 @@ function startGame(numScratchers, cost) {
       remainingTime -= 1000; // Subtract 1 second
       if (remainingTime >= 0) {
         timerDisplay.innerText = formatTime(remainingTime);
+        // Increment current minute and update click counts
+        currentMinute++;
+        const currentMinuteIndex = Math.min(Math.floor(currentMinute / 60), clickCountsPerMinute.length - 1);
+        switch (numScratchers) {
+          case 1:
+            clickCountsPerMinute[currentMinuteIndex].single++;
+            break;
+          case 3:
+            clickCountsPerMinute[currentMinuteIndex].bulk3++;
+            break;
+          case 4:
+            clickCountsPerMinute[currentMinuteIndex].bulk4++;
+            break;
+          case 5:
+            clickCountsPerMinute[currentMinuteIndex].bulk5++;
+            break;
+        }
       } else {
         clearInterval(timerInterval);
         timerDisplay.innerText = "Timer Complete";
@@ -155,6 +172,7 @@ function startGame(numScratchers, cost) {
 
   updateElementAppearance(true);
 }
+
 
 function formatTime(milliseconds) {
   const minutes = Math.floor(milliseconds / 60000);
